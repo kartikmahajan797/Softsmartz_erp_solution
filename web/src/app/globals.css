@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/*
+ * Factory ERP design tokens — "Forge" theme.
+ * Petrol-teal brand, cool graphite neutrals, saffron accent used sparingly
+ * (logo, focus of attention). Status colours carry meaning only.
+ */
+:root {
+  /* Brand */
+  --brand-950: #071c24;
+  --brand-900: #0b2530;
+  --brand-800: #12343f;
+  --brand-700: #1b4552;
+  --primary-50: #e9f6f6;
+  --primary-100: #cdeaea;
+  --primary-200: #9fd5d5;
+  --primary-500: #12898c;
+  --primary-600: #0d7377;
+  --primary-700: #0a5e61;
+  --primary-800: #084a4c;
+  --accent-500: #e8891c;
+  --accent-100: #fdeedb;
+
+  /* Neutrals */
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #f9fafb;
+  --surface-3: #f1f3f6;
+  --border: #e3e6eb;
+  --border-strong: #cdd2da;
+  --text: #17202a;
+  --text-2: #4a5563;
+  --text-3: #7a8494;
+  --text-inverse: #ffffff;
+
+  /* Status */
+  --success: #1a7f50;
+  --success-bg: #e6f4ec;
+  --warning: #a35f00;
+  --warning-bg: #fff3dc;
+  --danger: #c23434;
+  --danger-bg: #fdebeb;
+  --info: #2459c2;
+  --info-bg: #e9f0fc;
+  --progress: #6a46c0;
+  --progress-bg: #f0ebfb;
+  --neutral: #596373;
+  --neutral-bg: #edf0f3;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-pop: 0 10px 28px -6px rgba(16, 24, 40, 0.16), 0 2px 6px rgba(16, 24, 40, 0.06);
+
+  --sidebar-w: 248px;
+  --sidebar-w-collapsed: 60px;
+  --header-h: 52px;
+}
+
+@theme inline {
+  --font-sans: var(--font-plex), var(--font-plex-deva), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-brand-950: var(--brand-950);
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
+  --color-brand-700: var(--brand-700);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-accent-500: var(--accent-500);
+  --color-accent-100: var(--accent-100);
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-ink-3: var(--text-3);
+
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+  --color-progress: var(--progress);
+  --color-progress-bg: var(--progress-bg);
+  --color-neutral: var(--neutral);
+  --color-neutral-bg: var(--neutral-bg);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-pop: var(--shadow-pop);
+
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  *:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 1px;
+  }
+}
+
+/* Thin scrollbars inside the app */
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(4px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(16px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.anim-fade { animation: fade-in 120ms ease-out; }
+.anim-pop { animation: pop-in 140ms ease-out; }
+.anim-slide { animation: slide-in-right 160ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade, .anim-pop, .anim-slide { animation: none; }
+}
